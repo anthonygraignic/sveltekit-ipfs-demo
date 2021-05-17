@@ -2,6 +2,10 @@
 	import {base} from '$app/paths';
 	import { page } from '$app/stores';
 	import logo from './svelte-logo.svg';
+
+	function isActive(href: string, page: string): boolean {
+		return href.replace(base, '').replace(/^\/+|\/+$/g, '') === page.replace(/^\/+|\/+$/g, '')
+	}
 </script>
 
 <header>
@@ -16,8 +20,8 @@
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
 		<ul>
-			<li class:active={$page.path === `${base}/`}><a sveltekit:prefetch href={`${base}/`}>Home</a></li>
-			<li class:active={$page.path === `${base}/about/`}><a sveltekit:prefetch href={`${base}/about/`}>About</a></li>
+			<li class:active={isActive(`${base}/`, $page.path)}><a sveltekit:prefetch href={`${base}/`}>Home</a></li>
+			<li class:active={isActive(`${base}/about/`, $page.path)}><a sveltekit:prefetch href={`${base}/about/`}>About</a></li>
 			<!-- <li class:active={$page.path === `${base}/todos/`}><a sveltekit:prefetch href="/todos">Todos</a></li> -->
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">

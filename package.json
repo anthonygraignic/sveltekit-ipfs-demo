@@ -5,9 +5,11 @@
     "@sveltejs/kit": "next",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
+    "dotenv-cli": "^4.0.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.2.0",
+    "ipfs-deploy": "^8.0.1",
     "ipfs-gateway-emulator": "^4.2.1-ipfs.1",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
@@ -29,6 +31,7 @@
     "preview": "svelte-kit preview",
     "serve": "ipfs-emulator --only -d build -p 8080",
     "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-    "format": "prettier --write --plugin-search-dir=. ."
+    "format": "prettier --write --plugin-search-dir=. .",
+    "deploy": "dotenv -- ipfs-deploy -p pinata -s sveltekit-ipfs-demo build"
   }
 }
